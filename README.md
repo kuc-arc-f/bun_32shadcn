@@ -25,6 +25,11 @@ bun run dev
 ```
 
 ***
+### example
+
+* api_test : api (d1) connect,  example
+
+***
 ### blog
 
 * https://knakatech-blog.pages.dev/posts/162
