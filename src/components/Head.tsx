@@ -6,12 +6,16 @@ function Page() {
     <div>
         <a href="/">[ Home ]</a>
         <a href="/about" className="ms-2">&nbsp; [ about ]</a>
+        <br />
+        <a href="/list_test" className="ms-2"> [ ListTest ]</a>
+        <a href="/list_test2" className="ms-2"> [ ListTest2 ]</a>
+        <a href="/list_test6" className="ms-2"> [ ListTest6 ]</a>
+        <a href="/todo" className="ms-2"> [ Todo ]</a>
         <hr />
     </div>
     );
 }
 export default Page;
 /*
-<a href="/button" className="ms-2">&nbsp; [ button ]</a>
-<a href="/card" className="ms-2">&nbsp; [ Card ]</a>
+<a href="/api_test" className="ms-2"> [ ApiTest ]</a>
 */
