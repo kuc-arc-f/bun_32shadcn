@@ -28,6 +28,7 @@ bun run dev
 ### example
 
 * api_test : api (d1) connect,  example
+* login_test:  login ,auth example
 
 ***
 ### blog

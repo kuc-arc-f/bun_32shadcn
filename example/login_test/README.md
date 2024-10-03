@@ -26,7 +26,7 @@ AUTH_EXPIRED_TIME=120
 ```
 
 ***
-### blog
+### related
 
 https://knakatech-blog.pages.dev/posts/166
 
