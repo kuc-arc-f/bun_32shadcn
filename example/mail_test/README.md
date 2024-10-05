@@ -6,7 +6,7 @@
 
  date   : 2024/10/01
  
- update :
+ update : 2024/10/05
 
 ***
 
@@ -24,7 +24,9 @@ GOOGLE_MAIL_PASSWORD="your_app_password"
 ***
 ### related
 
-https://knakatech-blog.pages.dev/posts/168
+* https://knakatech-blog.pages.dev/posts/168
+
+* https://knakatech-blog.pages.dev/posts/169
 
 ***
 # License
