@@ -29,6 +29,7 @@ bun run dev
 
 * api_test : api (d1) connect,  example
 * login_test:  login ,auth example
+* mail_test: mail send form (Gmail)
 
 ***
 ### blog
