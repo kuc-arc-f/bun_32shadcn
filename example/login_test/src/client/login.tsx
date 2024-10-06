@@ -1,4 +1,6 @@
 import Head from '../components/Head'
+import HeadLogin from '../components/HeadLogin'
+
 import ClientUtil from './lib/ClientUtil';
 import HttpCommon from "./lib/HttpCommon";
 //
@@ -38,7 +40,7 @@ function Page() {
   // 
   return (
   <div className="">
-    <Head />
+    <HeadLogin />
     <div className="flex items-center justify-center min-h-screen">
       <Card className="w-[350px] my-4" id="form1">
         <CardHeader>
