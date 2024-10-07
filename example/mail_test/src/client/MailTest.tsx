@@ -1,4 +1,8 @@
+import React from 'react'
+import {useState} from 'react';
+
 import Head from '../components/Head'
+import LoadingBox from '../components/LoadingBox'
 import ClientUtil from './lib/ClientUtil';
 import HttpCommon from "./lib/HttpCommon";
 //
@@ -16,11 +20,14 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 //
 export default function Page() {
+  const [updatetime, setUpdatetime] = React.useState("");
+  const [loading, setLoading] = useState(false);
   //
   const procSend = async function(){
     //location.reload();
     try {
       console.log("#procSend");
+      setLoading(true);
       const values = ClientUtil.getInputValue("form1"); 
       const mail_body = ClientUtil.getElementValue("mail_body");
       values.mail_body = mail_body;
@@ -29,6 +36,7 @@ export default function Page() {
       //return;
       const json = await HttpCommon.post(values, "/api/mail/send");
       console.log(json);
+      setLoading(false);
       if(json.ret !== 200){
         alert("Error, send-mail");
       }else{
@@ -39,10 +47,11 @@ export default function Page() {
       console.error(e);
     } 
   }
-  //
+  //{(loading)?(<LoadingBox />):null}
   return (
   <div className="">
     <Head />
+    {(loading)?(<LoadingBox />):null}
     <div className="flex items-center justify-center min-h-screen">
       <Card className="w-[550px] my-4" id="form1">
         <CardHeader>
