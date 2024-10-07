@@ -34,18 +34,15 @@ function Page() {
   }
   //
   return (
-  <div className="navigate_wrap">
+  <div className="navigate_wrap bg-green-100 py-0.5">
     <NavigationMenu className="">
       <NavigationMenuList>
         {/*  */}
-        <NavigationMenuItem className="px-2">
+        <NavigationMenuItem className="text-green-600 mx-2">
           <a href="/">home</a>
         </NavigationMenuItem>
-        <NavigationMenuItem className="px-2">
+        <NavigationMenuItem className="text-green-600 mx-2">
           <a href="/about">about</a>
-        </NavigationMenuItem>
-        <NavigationMenuItem className="px-2">
-          <a href="/test_menu">TestMenu</a>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
@@ -54,16 +51,4 @@ function Page() {
 }
 export default Page;
 /*
-<a href="/">[ Home ]</a>
-<a href="/about" className="ms-2"> [ about ]</a>
-<a href="/test_menu" className="ms-2"> [ TestMenu ]</a>
-<a href="/login" className="ms-2">&nbsp; [ Login ]</a>
-<br />
-<a href="/list_test" className="ms-2"> [ ListTest ]</a>
-<a href="/list_test2" className="ms-2"> [ ListTest2 ]</a>
-<a href="/list_test6" className="ms-2"> [ ListTest6 ]</a>
-<a href="/navi_test" className="ms-2"> [ NaviTest ]</a>
-<a href="/todo" className="ms-2"> [ Todo ]</a>
-<a href="/api_test" className="ms-2"> [ ApiTest ]</a>
-<hr />
 */

@@ -19,9 +19,14 @@ import ListTest2 from './client/ListTest2';
 import ListTest4 from './client/ListTest4';
 import ListTest5 from './client/ListTest5';
 import ListTest6 from './client/ListTest6';
+import LoadTest from './client/LoadTest';
+import Login from './client/login';
+
 import Todo from './client/Todo'; 
+import TestMenu from './client/TestMenu';
 //
 import NavigationMenu from './client/NavigationMenu';
+import NaviTest from './client/NaviTest';
 import Progress from './client/Progress';
 import Radio from './client/Radio';
 import Select from './client/Select';
@@ -55,9 +60,12 @@ export default function App(){
         <Route path="/list_test4" element={<ListTest4 />} />
         <Route path="/list_test5" element={<ListTest5 />} />
         <Route path="/list_test6" element={<ListTest6 />} />
+        <Route path="/load_test" element={<LoadTest />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/todo" element={<Todo />} />
         <Route path="/input" element={<Input />} />
         <Route path="/navigation_menu" element={<NavigationMenu />} />
+        <Route path="/navi_test" element={<NaviTest />} />
         <Route path="/progress" element={<Progress />} />
         <Route path="/radio" element={<Radio />} />
         <Route path="/select" element={<Select />} />
@@ -65,6 +73,7 @@ export default function App(){
         <Route path="/sheet4" element={<Sheet4 />} />
         <Route path="/switch" element={<Switch />} />
         <Route path="/table" element={<Table />} />
+        <Route path="/test_menu" element={<TestMenu />} />
         <Route path="/textarea" element={<TextArea />} />
         <Route path="/data_table_test1" element={<DataTableTest1 />} />
         <Route path="/data_table_test2" element={<DataTableTest2 />} />

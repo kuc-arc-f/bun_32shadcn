@@ -94,5 +94,34 @@ console.log("path=", url + path);
     res.sendStatus(500);
   }
 });
+/**
+* 
+* @param
+*
+* @return
+*/ 
+router.post('/send_kv_put', async function(req: any, res: any) {
+  try {
+    //console.log("url=", process.env.API_URL);
+    const url = process.env.KV_URL; 
+    const item = {
+      api_key: process.env.KV_API_KEY,
+      key: "uid:" + String(process.env.AUTH_USER_ID),
+      value: "222",
+    };
+//console.log(req.body);
+    const path = req.body.api_url;	
+console.log("path=", url + path);
+    const response = await axios.post(url + "/put", item, 
+    {headers: { 'Content-Type': 'application/json'}
+    });
+//console.log(data);
+    //@ts-ignore
+    return res.json(response.data);
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+});
 
 export default router;
