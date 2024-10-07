@@ -11,9 +11,10 @@ const CrudIndex = {
     try{
 //console.log("#getList");
       let item  = values;
-      item.api_url = "/test/create";
+      //item.api_url = "/test/create";
       //console.log(item);
-      const json = await HttpCommon.post(item, "/api/common/send_post");
+      //const json = await HttpCommon.post(item, "/api/common/send_post");
+      const json = await HttpCommon.post(item, "/api/api_test/create");
       let items = json;
       console.log(json);
       return items;

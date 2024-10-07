@@ -5,9 +5,12 @@ import { renderToString } from 'react-dom/server';
 import Top from './pages/App';
 import About from './pages/about';
 //
+import Common from './lib/Common';
+import apiTestRouter from './routes/apiTestRouter';
 import commonRouter from './routes/commonRouter';
 import todoRouter from './routes/todoRouter';
 import tableData from './routes/tableData';
+import userRouter from './routes/userRouter';
 //
 const app = express();
 
@@ -22,8 +25,10 @@ const errorObj = {ret: "NG", messase: "Error"};
 //API
 const data = tableData.addList();
 //console.log(data);
+app.use('/api/api_test', apiTestRouter);
 app.use('/api/common', commonRouter);
 app.use('/api/todo', todoRouter);
+app.use('/api/user', userRouter);
 //console.log("#api_START");
 app.post("/api/table/get_list", async(req, res) => {
   try {

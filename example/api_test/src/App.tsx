@@ -33,6 +33,7 @@ import Select from './client/Select';
 import Sheet from './client/Sheet';
 import Sheet4 from './client/Sheet4';
 import Switch from './client/Switch';
+import Sunspense1 from './client/Sunspense1';
 import Table from './client/Table';
 import TextArea from './client/TextArea';
 //
@@ -72,6 +73,7 @@ export default function App(){
         <Route path="/sheet" element={<Sheet />} />
         <Route path="/sheet4" element={<Sheet4 />} />
         <Route path="/switch" element={<Switch />} />
+        <Route path="/sunspense1" element={<Sunspense1 />} />
         <Route path="/table" element={<Table />} />
         <Route path="/test_menu" element={<TestMenu />} />
         <Route path="/textarea" element={<TextArea />} />

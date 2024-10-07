@@ -202,11 +202,12 @@ export default function Page(){
       rowSelection,
     },
   })
-  //
+  /*
   const openFunc = async function(){
     form1typeCreate = 1;
     handleOpen();
   }
+  */
   const testDialog = function(){
     try {
       form1typeCreate = 1;
@@ -240,12 +241,29 @@ console.log(formData);
       console.error(e);
     }
   }
+  //
   const cbFunc = async function(){
     console.log("#cbFunc");
     const dlg = document.getElementById('confirmDialog');
     const values = ClientUtil.getInputValue("form1"); 
     console.log(values);
-    data = await CrudIndex.create(values); 
+    const resulte = await CrudIndex.create(values); 
+    console.log("cbFunc.ret=", resulte.ret);
+    console.log(resulte);
+    if(resulte.ret !== "OK" && resulte.ret !==200){
+      console.log("error <> 200");
+      //{errors?.title && (<div className="error_message">{errors.title}</div>
+      let s = "";
+      if(resulte.errors?.title){
+        s += "title: " + resulte.errors.title + "\n";
+      }
+      if(resulte.errors?.content){
+        s += "content: " +resulte.errors.content+ "\n";
+      }
+      alert(s);
+      return;
+    }
+//return;
     if(dlg) {
       //@ts-ignore
       dlg.close();
