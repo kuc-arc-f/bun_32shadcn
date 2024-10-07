@@ -267,11 +267,18 @@ console.log(formData);
       dlg.close();
     }
   }  
-  //
+  if(loading) {
+    return(
+    <>
+      <Head />
+      <LoadingBox />
+    </>
+    );
+  }
+  // {(loading)?(<LoadingBox />):null}
   return(
   <>
     <Head />
-    {(loading)?(<LoadingBox />):null}
     <div className="container mx-auto my-2 px-8 bg-white list3_main_wrap">
       <h1 className="text-3xl font-bold mt-2">ApiTest</h1>
       <hr className="mt-1 mb-2" />
