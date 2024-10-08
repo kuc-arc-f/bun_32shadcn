@@ -1,0 +1,190 @@
+import React from 'react';
+import {useState, useEffect} from 'react';
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { format } from "date-fns"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Calendar as CalendarIcon } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { Calendar } from "@/components/ui/calendar"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+import { Textarea } from "@/components/ui/textarea"
+
+
+let titleString = "";
+//
+function Compo(props: any) {
+  const [date, setDate] = React.useState<Date>();
+  const [option1, setOption1] = React.useState<bool>(false);
+  const [option2, setOption2] = React.useState<bool>(false);
+  const [option3, setOption3] = React.useState<bool>(false);
+  const [radio1, setRadio1] = React.useState<bool>(true);
+  const [radio2, setRadio2] = React.useState<bool>(false);
+
+console.log(props);
+console.log("type_create=", props.type_create);
+console.log("option_1=", props.formData.option_1);
+console.log("public=", props.formData.public);
+  let amount = "";
+  let amountNumber = "";
+  //
+  React.useEffect(() => {
+    (async() => {
+    })()
+  }, []);
+  //
+  const closeButton = function(){
+    const dlg = document.getElementById('confirmDialog');
+    location.reload();
+    if(dlg) {
+      //@ts-ignore
+      //dlg.close();
+    }
+  }
+  //
+  const okFunc = async function(){
+    console.log("#okFunc");
+    let publicValue = "1";
+    if(radio2){ publicValue = "0" }
+    const item = {
+      option_1: option1,
+      option_2: option2,
+      option_3: option3,
+      public: publicValue,
+    }
+    props.cbFunction(item);
+  }
+  const okEditFunc = async function(){
+    console.log("#cbEditFunction");
+    props.cbEditFunction();
+  }
+  //
+  return (
+  <dialog id="confirmDialog" className="dialog rounded-md">
+    <div className="bg-white rounded-lg px-8 pt-3 pb-3 dialog_body_wrap w-[450px]" id="form1">
+      <p className="text-2xl font-bold">{props.message}</p>
+      <hr className="my-2" />
+      <div className="grid grid-cols-4 items-center gap-4">
+        <Label htmlFor="username" className="text-right">
+        title
+        </Label>
+        {(props.type_create === 1)?(
+          <Input id="title" name="title" 
+          defaultValue={""} className="col-span-3" />  
+        ):(
+          <Input id="title" name="title"disabled={true}
+          defaultValue={props.formData.title} className="col-span-3" />
+        )} 
+      </div>
+      <div className="grid grid-cols-4 items-center gap-4 mt-2">
+        <Label htmlFor="content" className="text-right">
+        content
+        </Label>
+        <Textarea id="content" name="content" className="col-span-3"
+         rows={4} defaultValue={props.formData.content} />
+      </div>
+      {/* public */}
+      <div class="flex flex-row">
+        <div class="w-[90px] p-2 m-1 text-end">
+          <Label htmlFor="content" className="text-right">public
+          </Label>
+        </div>
+        <div class="flex-1 py-3 m-1">
+          <input id="radio1" type="radio" name="public" 
+          className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+          value="1"
+          defaultChecked={props.formData.radio1}
+          onChange={(event)=>{
+            console.log("#radio1.checked=" + event.target.checked);
+            setRadio1(event.target.checked);
+          }}
+          />
+          <label for="radio1" className="ms-2 mt-2 text-sm font-medium text-gray-900">Public
+          </label>
+          <hr />
+          <input id="radio2" type="radio" name="public" 
+          className="mt-2 w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+          value="0"
+          defaultChecked={props.formData.radio2}
+          onChange={(event)=>{
+            setRadio2(event.target.checked);
+          }}
+          />
+          <label for="radio2" className="ml-2 text-sm font-medium text-gray-900">None</label>
+        </div>
+      </div>
+      {/* option */}
+      <div className="flex flex-row">
+        <div className="w-[90px] p-2 m-1 text-end">
+          <Label htmlFor="content" className="text-right">OptionCheck
+          </Label>
+        </div>
+        <div className="flex-1 py-3 m-1">
+          <input type="checkbox" id="checkbox_1" name="checkbox_1" 
+          className="w-5 h-5 mx-2 " defaultChecked={props.formData.option_1} 
+          onChange={(event)=>{
+            console.log("#checkbox_1.checked=" + event.target.checked);
+            setOption1(event.target.checked);
+          }} />
+          <Label htmlFor="checkbox_1" className="text-right">CheckBox1
+          </Label><hr />
+          <input type="checkbox" id="checkbox_2" name="checkbox_2" 
+          className="w-5 h-5 mx-2 " defaultChecked={props.formData.option_2} 
+          onChange={(event)=>{ setOption2(event.target.checked); }} />
+          <Label htmlFor="" className="text-right">CheckBox2
+          </Label><hr />
+          <input type="checkbox" id="checkbox_3" name="checkbox_3" 
+          className="w-5 h-5 mx-2 " defaultChecked={props.formData.option_3} 
+          onChange={(event)=>{ setOption3(event.target.checked); }} />
+          <Label htmlFor="" className="text-right">CheckBox3
+          </Label><hr />
+        </div>
+      </div>
+      <div className="flex flex-row">
+        <div className="w-[90px] p-2 m-1 text-end">
+          <Label htmlFor="" className="text-right">Num
+          </Label>
+        </div>
+        <div className="flex-1 py-3 m-1">
+          <Label htmlFor="num1" className="text-right">num1
+          </Label>
+          <Input type="number" id="num1" name="num1" 
+            defaultValue={props.formData.num1} className="col-span-3" />  
+          <hr className="my-1" />
+          <Label htmlFor="num2" className="text-right">num2
+          </Label>
+          <Input type="number" id="num2" name="num2" 
+            defaultValue={props.formData.num2} className="col-span-3" />  
+        </div>
+      </div>
+      <hr className="my-2" />
+      {/* footer_button */}
+      <div className="text-end">
+        <button onClick={()=>closeButton()}
+          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-4 border border-blue-500 hover:border-transparent rounded"
+          type="submit" value="OK">Cancel</button>
+          {(props.type_create === 1)?(
+            <Button onClick={()=>okFunc()} className="mx-2"
+            value="OK">Create</Button>
+          ):(
+            <>
+            {/* 
+              <Button onClick={()=>okEditFunc()} className="mx-2"
+              value="OK">Save</Button>
+            */}
+            </>
+          )}
+      </div>
+    </div>
+  </dialog>
+  );
+}
+export default Compo;
+/*
+className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-8 ms-2 rounded"
+*/
