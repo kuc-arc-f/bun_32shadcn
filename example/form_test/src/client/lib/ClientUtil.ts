@@ -29,6 +29,71 @@ const ClientUtil = {
       console.error(e);
       throw new Error("Error, getInputValue");
     }
-  }
+  },
+  /**
+   *
+   * @param
+   *
+   * @return
+   */  
+  getElementValue: function(idName: string) : string
+  {
+    try{
+      let ret = "";
+      const elem = document.getElementById(idName);
+      // フォーム内の全てのINPUT要素を取得
+      if(!elem){ return ret; }
+      ret = elem.value;
+      
+      return ret;
+    } catch (e) {
+      console.error(e);
+      throw new Error("Error, getElementValue");
+    }
+  },
+  /**
+   *
+   * @param
+   *
+   * @return
+   * true: checked(value=on)
+   */  
+  getCheckboxValue: function(idName: string) : string
+  {
+    try{
+      let ret = false;
+      const elem = document.getElementById(idName);
+      console.log("checked=", elem.checked);
+      if(!elem){ return ret; }
+      ret = elem.checked;
+      return ret;
+    } catch (e) {
+      console.error(e);
+      throw new Error("Error, getCheckboxValue");
+    }
+  },
+  /**
+   *
+   * @param
+   *
+   * @return
+   * value(selected)
+   */  
+  getRadioValue: function(name: string) : string
+  {
+    try{
+      let ret = "";
+      const selectedOption = document.querySelector(`input[name="${name}"]:checked`);
+      if (selectedOption) {
+        //alert(`Selected option: ${selectedOption.value}`);
+        ret = selectedOption.value;
+        return ret;
+      } 
+      return ret;
+    } catch (e) {
+      console.error(e);
+      throw new Error("Error, getRadioValue");
+    }
+  },
 }
 export default ClientUtil;

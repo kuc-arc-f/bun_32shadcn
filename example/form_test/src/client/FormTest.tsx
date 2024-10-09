@@ -141,14 +141,14 @@ export default function Page(){
                     form1typeCreate = 0;
                     form1_id = payment.id;
                     console.log("id=", payment.id)
-                    openShowDialog(payment.id);
-                    //openEditDialog(payment.id);
+                    //openShowDialog(payment.id);
+                    openEditDialog(payment.id);
                   } catch (e) {
                     console.error(e);
                   }
                 }}
               >
-                Show
+                Edit
               </DropdownMenuItem>            
               <DropdownMenuSeparator />
               <DropdownMenuItem
@@ -253,6 +253,13 @@ console.log("public=", formData.public);
       form1typeCreate = 0;
       const d = await CrudIndex.getItem(id);
       formData = d;
+      if(formData.public === "0"){
+        formData.radio1 = false;
+        formData.radio2 = true;
+      }else{
+        formData.radio1 = true;
+        formData.radio2 = false;
+      }      
 console.log(formData);
       setUpdatetime(new Date().toString());
       const modalDialog = document.getElementById('confirmDialog');
@@ -303,11 +310,15 @@ console.log(formData);
     location.reload();
   }
   //
-  const cbEditFunc = async function(){
+  const cbEditFunc = async function(item: any){
     const dlg = document.getElementById('confirmDialog');
     const values = ClientUtil.getInputValue("form1"); 
     values.id = form1_id; 
     values.api_url = "/test/update"; 
+    values.option_1 = item.option_1;
+    values.option_2 = item.option_2;
+    values.option_3 = item.option_3; 
+    values.public = item.public; 
     console.log(values);
     data = await CrudIndex.update(values);
     location.reload();
@@ -338,7 +349,7 @@ console.log(formData);
           <FormDialog message={`Create`} cbFunction={cbFunc} cbEditFunction={cbEditFunc}
           type_create={form1typeCreate} formData={formData} />
       ):(
-        <FormDialog message={`Show`} cbFunction={cbFunc} cbEditFunction={cbEditFunc}
+        <FormDialog message={`Edit`} cbFunction={cbFunc} cbEditFunction={cbEditFunc}
         type_create={form1typeCreate} formData={formData} />
       )}
       <hr className="my-2" />

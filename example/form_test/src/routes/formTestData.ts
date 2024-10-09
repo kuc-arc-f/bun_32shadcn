@@ -112,16 +112,23 @@ console.log(result);
   * @return
   */  
   update: function(body: any){
-    //console.log("#update");
+    console.log("#update");
     try {
       if(body) {
-        //console.log(body);
+console.log(body);
         //console.log("id=", body.id);
         const out: any[] = [];
         this.items.forEach((item) => {
           //console.log(item)
-          if(Number(item.id) === body.id){
-            item.context = body.context;
+          if(item.id === body.id){
+            item.content = body.content;
+            item.public = body.public;
+            item.option_1 = body.option_1;
+            item.option_2 = body.option_2;
+            item.option_3 = body.option_3;
+            item.publish_date = body.publish_date;
+            item.num1 = body.num1;
+            item.num2 = body.num2;
             out.push(item);
           }else{
             out.push(item);

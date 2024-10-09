@@ -14,7 +14,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { Textarea } from "@/components/ui/textarea"
-
+import ClientUtil from '../lib/ClientUtil';
 
 let titleString = "";
 //
@@ -28,7 +28,7 @@ function Compo(props: any) {
 
 console.log(props);
 console.log("type_create=", props.type_create);
-console.log("option_1=", props.formData.option_1);
+console.log("formData.option_1=", props.formData.option_1);
 console.log("public=", props.formData.public);
   let amount = "";
   let amountNumber = "";
@@ -47,6 +47,23 @@ console.log("public=", props.formData.public);
     }
   }
   //
+  const getFormData = function(){
+    console.log("getFormData")
+    const option_1value = ClientUtil.getCheckboxValue("checkbox_1");
+    const option_2value = ClientUtil.getCheckboxValue("checkbox_2");
+    const option_3value = ClientUtil.getCheckboxValue("checkbox_3");
+    //console.log("option_1value=", option_1value);
+    const publicValue = ClientUtil.getRadioValue("public");
+
+    const item = {
+      option_1: option_1value,
+      option_2: option_2value,
+      option_3: option_3value,
+      public: publicValue,
+    }
+    return item;
+  }
+  //
   const okFunc = async function(){
     console.log("#okFunc");
     let publicValue = "1";
@@ -60,8 +77,11 @@ console.log("public=", props.formData.public);
     props.cbFunction(item);
   }
   const okEditFunc = async function(){
-    console.log("#cbEditFunction");
-    props.cbEditFunction();
+    const item = getFormData();
+console.log("#cbEditFunction");
+console.log(item);
+    //return;
+    props.cbEditFunction(item);
   }
   //
   return (
@@ -173,10 +193,8 @@ console.log("public=", props.formData.public);
             value="OK">Create</Button>
           ):(
             <>
-            {/* 
               <Button onClick={()=>okEditFunc()} className="mx-2"
               value="OK">Save</Button>
-            */}
             </>
           )}
       </div>
