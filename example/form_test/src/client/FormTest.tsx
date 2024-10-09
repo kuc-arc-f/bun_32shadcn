@@ -71,6 +71,7 @@ export type Payment = {
 export default function Page(){
   const [updatetime, setUpdatetime] = React.useState("");
   const [loading, setLoading] = useState(true);
+  const [errors, setErrors] = useState({});
   const [isOpen, setIsOpen] = useState(false);
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
@@ -141,7 +142,6 @@ export default function Page(){
                     form1typeCreate = 0;
                     form1_id = payment.id;
                     console.log("id=", payment.id)
-                    //openShowDialog(payment.id);
                     openEditDialog(payment.id);
                   } catch (e) {
                     console.error(e);
@@ -284,12 +284,10 @@ console.log(formData);
     values.public = item.public; 
     //
     console.log(values);
-//return;
     const resulte = await CrudIndex.create(values); 
     console.log("cbFunc.ret=", resulte.ret);
     console.log(resulte);
-    if(resulte.ret &&
-      resulte.ret !== "OK" && resulte.ret !==200){
+    if(resulte.ret && resulte.ret !==200){
       console.log("error <> 200");
       //{errors?.title && (<div className="error_message">{errors.title}</div>
       let s = "";
@@ -299,13 +297,14 @@ console.log(formData);
       if(resulte.errors?.content){
         s += "content: " +resulte.errors.content+ "\n";
       }
+      setErrors(resulte.errors);
       alert(s);
       return;
     }
 //return;
     if(dlg) {
       //@ts-ignore
-      dlg.close();
+      //dlg.close();
     }
     location.reload();
   }
@@ -347,10 +346,10 @@ console.log(formData);
       </Button>
       {(form1typeCreate === 1)?(
           <FormDialog message={`Create`} cbFunction={cbFunc} cbEditFunction={cbEditFunc}
-          type_create={form1typeCreate} formData={formData} />
+          type_create={form1typeCreate} formData={formData} errors={errors} />
       ):(
         <FormDialog message={`Edit`} cbFunction={cbFunc} cbEditFunction={cbEditFunc}
-        type_create={form1typeCreate} formData={formData} />
+        type_create={form1typeCreate} formData={formData} errors={errors} />
       )}
       <hr className="my-2" />
       {/* table */}

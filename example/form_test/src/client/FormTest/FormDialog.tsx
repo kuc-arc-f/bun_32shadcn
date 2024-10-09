@@ -99,8 +99,12 @@ console.log(item);
         ):(
           <Input id="title" name="title"disabled={true}
           defaultValue={props.formData.title} className="col-span-3" />
-        )} 
+        )}
       </div>
+      {props.errors.title ? (
+        <div className="error_message col-span-4 text-center">{props.errors.title}
+        </div>
+      ): null}
       <div className="grid grid-cols-4 items-center gap-4 mt-2">
         <Label htmlFor="content" className="text-right">
         content
@@ -108,13 +112,17 @@ console.log(item);
         <Textarea id="content" name="content" className="col-span-3"
          rows={4} defaultValue={props.formData.content} />
       </div>
+      {props.errors.content ? (
+        <div className="error_message col-span-4 text-center">{props.errors.content}
+        </div>
+      ): null}
       {/* public */}
       <div class="flex flex-row">
         <div class="w-[90px] p-2 m-1 text-end">
           <Label htmlFor="content" className="text-right">public
           </Label>
         </div>
-        <div class="flex-1 py-3 m-1">
+        <div class="flex-1 pt-2 m-1">
           <input id="radio1" type="radio" name="public" 
           className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
           value="1"
@@ -144,7 +152,7 @@ console.log(item);
           <Label htmlFor="content" className="text-right">OptionCheck
           </Label>
         </div>
-        <div className="flex-1 py-3 m-1">
+        <div className="flex-1 py-1 m-1">
           <input type="checkbox" id="checkbox_1" name="checkbox_1" 
           className="w-5 h-5 mx-2 " defaultChecked={props.formData.option_1} 
           onChange={(event)=>{
@@ -166,11 +174,11 @@ console.log(item);
         </div>
       </div>
       <div className="flex flex-row">
-        <div className="w-[90px] p-2 m-1 text-end">
+        <div className="w-[90px] p-1 m-1 text-end">
           <Label htmlFor="" className="text-right">Num
           </Label>
         </div>
-        <div className="flex-1 py-3 m-1">
+        <div className="flex-1 py-1 m-1">
           <Label htmlFor="num1" className="text-right">num1
           </Label>
           <Input type="number" id="num1" name="num1" 

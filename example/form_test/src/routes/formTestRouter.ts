@@ -3,6 +3,16 @@ const router = express.Router();
 //require('dotenv').config();
 import axios from 'axios';
 import formTestData from './formTestData';
+import { z } from 'zod';
+
+const FormData = z.object({
+  title: z
+    .string()
+    .min(1, { message: '1文字以上入力してください。' }),
+  content: z
+    .string()
+    .min(1, { message: '1文字以上入力してください。' }),
+});
 
 /**
 * 
@@ -11,6 +21,16 @@ import formTestData from './formTestData';
 * @return
 */ 
 router.post('/create', async function(req: any, res: any) {
+  const retObj = {ret: 500, message: "", errors: {}}
+  try {
+    const body = req.body;
+    console.log(body);
+    FormData.parse(body);
+  } catch (e) {
+    console.error(e);
+    retObj.errors = e.flatten().fieldErrors;
+    return res.json(retObj);
+  }
   try {
     if(!req.body){
       throw new Error("nothing, body");

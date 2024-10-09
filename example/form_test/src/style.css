@@ -17,6 +17,7 @@ dialog {
 dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.75);
 }
+.error_message {color: red; }
 
 /* custom_class */
 .container_base {
