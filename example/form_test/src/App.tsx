@@ -14,6 +14,10 @@ import DataTable from './client/DataTable';
 import Dialog from './client/Dialog';
 import Form from './client/Form';
 import FormTest from './client/FormTest';
+import FormTest2 from './client/FormTest2';
+import FormTest2crate from './client/FormTest2/Create';
+import FormTest2edit from './client/FormTest2/Edit';
+
 import Input from './client/Input';
 import ListTest from './client/ListTest';
 import ListTest2 from './client/ListTest2';
@@ -58,6 +62,9 @@ export default function App(){
         <Route path="/dialog" element={<Dialog />} />
         <Route path="/form" element={<Form />} />
         <Route path="/form_test" element={<FormTest />} />
+        <Route path="/form_test2" element={<FormTest2 />} />
+        <Route path="/form_test2create" element={<FormTest2crate />} />
+        <Route path="/form_test2edit" element={<FormTest2edit />} />
         <Route path="/list_test" element={<ListTest />} />
         <Route path="/list_test2" element={<ListTest2 />} />
         <Route path="/list_test4" element={<ListTest4 />} />

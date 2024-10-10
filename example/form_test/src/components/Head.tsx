@@ -50,6 +50,9 @@ function Page() {
         <NavigationMenuItem className="px-2">
           <a href="/form_test" className="">FormTest</a>
         </NavigationMenuItem>
+        <NavigationMenuItem className="px-2">
+          <a href="/form_test2" className="">FormTest2</a>
+        </NavigationMenuItem>
 
       </NavigationMenuList>
     </NavigationMenu>

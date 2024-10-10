@@ -17,6 +17,8 @@ function Page() {
       <hr className="my-2" />
       <a href="/api_test" className="ms-2"> [ ApiTest ]</a>
       <a href="/form_test" className="ms-2"> [ FormTest ]</a>
+      <a href="/form_test2" className="ms-2"> [ FormTest2 ]</a>
+
       <hr />
     </div>
   </>
