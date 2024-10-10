@@ -26,7 +26,7 @@ console.log(body);
         option_1: body.option_1,
         option_2: body.option_2,
         option_3: body.option_3,
-        publish_date: "",
+        pub_date: body.pub_date,
         num1: body.num1,
         num2: body.num2,
         num3: "",
@@ -126,7 +126,7 @@ console.log(body);
             item.option_1 = body.option_1;
             item.option_2 = body.option_2;
             item.option_3 = body.option_3;
-            item.publish_date = body.publish_date;
+            item.pub_date = body.pub_date;
             item.num1 = body.num1;
             item.num2 = body.num2;
             out.push(item);

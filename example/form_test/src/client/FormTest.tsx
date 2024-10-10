@@ -1,5 +1,6 @@
 import React from 'react'
 import {useState} from 'react';
+import dayjs from 'dayjs';
 //import {Link } from 'react-router-dom';
 import Head from '../components/Head'
 import LoadingBox from '../components/LoadingBox'
@@ -206,11 +207,14 @@ export default function Page(){
   //
   const testDialog = function(){
     try {
+      const now = dayjs();
       form1typeCreate = 1;
       formData.num1 = 0;
       formData.num2 = 0;
       formData.radio1 = true;
       formData.radio2 = false;
+      formData.pub_date = now.format("YYYY-MM-DD");
+     //console.log("pub_date=", formData.pub_date);
       setUpdatetime(new Date().toString());
       const modalDialog = document.getElementById('confirmDialog');
       if(modalDialog) {

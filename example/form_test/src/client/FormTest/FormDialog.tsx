@@ -190,6 +190,17 @@ console.log(item);
             defaultValue={props.formData.num2} className="col-span-3" />  
         </div>
       </div>
+      <div className="flex flex-row">
+        <div className="w-[90px] p-1 m-1 text-end">
+          <Label htmlFor="" className="text-right">pubDate
+          </Label>
+        </div>
+        <div className="flex-1 py-1 px-2 m-0">
+          <input type="date" id="pub_date" name="pub_date" defaultValue={props.formData.pub_date} 
+           />
+        </div>
+      </div>
+
       <hr className="my-2" />
       {/* footer_button */}
       <div className="text-end">
