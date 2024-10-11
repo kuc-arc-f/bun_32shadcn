@@ -102,6 +102,7 @@ export default function Page(){
     },
     {
       accessorKey: "title",
+      size: 250,
       header: ({ column }) => {
         return (
           <Button
@@ -118,10 +119,12 @@ export default function Page(){
     {
       accessorKey: "content",
       header: () => <div className="text-start">content</div>,
+      size: 80,
       cell: ({ row }) => <div className="lowercase">{row.getValue("content")}</div>,
     },
     {
       id: "actions",
+      size: 80,
       enableHiding: false,
       cell: ({ row }) => {
         const payment = row.original
@@ -401,7 +404,7 @@ console.log(formData);
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id}>
+                    <TableHead key={header.id} style={{ width: header.getSize() }}>
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -469,7 +472,11 @@ console.log(formData);
         </div>
       </div>
 
-    </div>  
+    </div>
+    <style>{` 
+    .column_title { width: 50%; }
+    `}</style> 
+     
   </>
   );
 }

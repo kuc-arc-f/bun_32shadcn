@@ -90,6 +90,7 @@ console.log(item);
   //
   return (
   <div id="" className="flex items-center justify-center min-h-screen">
+    
     <Card className="w-[450px]" id="form1">
       <CardHeader>
         <span className="text-3xl font-bold">{props.message}</span>
@@ -210,9 +211,11 @@ console.log(item);
 
       </CardContent>
       <CardFooter className="flex justify-between">
-        <button onClick={()=>closeButton()}
-          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-4 border border-blue-500 hover:border-transparent rounded"
-          type="submit" value="OK">Cancel</button>
+        <a href="/form_test2">
+          <button
+          className="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-1 px-4 border border-green-500 hover:border-transparent rounded"
+          >Cancel</button>
+        </a>
         {(props.type_create === 1)?(
           <Button onClick={()=>okFunc()} className="mx-2"
           value="OK">Create</Button>

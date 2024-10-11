@@ -94,10 +94,6 @@ export default function Page(){
   <>
     <Head />
     <div className="container mx-auto my-2 px-8 bg-white list3_main_wrap">
-      {/*
-      <h1 className="text-3xl font-bold mt-2">Form2 Create</h1>
-      <hr className="mt-1 mb-2" />
-      */}
       {(form1typeCreate === 1)?(
         <Form message={`Create`} cbFunction={cbFunc} cbEditFunction={null}
         type_create={form1typeCreate} formData={formData} errors={errors} />
